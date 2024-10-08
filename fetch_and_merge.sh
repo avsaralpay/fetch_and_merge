@@ -31,7 +31,7 @@ else
     exit 1
 fi
 
-# Prompt the user for confirmation to commit, and push changes
+# Prompt the user for confirmation to commit, and push changes  -- for my own testing -- comment it out
 read -p "Do you want to commit, and push the changes? (y/n): " CONFIRM
 
 if [ "$CONFIRM" = "y" ]; then
