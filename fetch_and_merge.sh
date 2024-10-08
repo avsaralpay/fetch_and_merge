@@ -44,11 +44,6 @@ if [ "$CONFIRM" = "y" ]; then
     # Commit the changes
     git commit -m "$COMMIT_MESSAGE"
 
-    # Prompt the user for their GitHub username and token
-    read -p "Enter your GitHub username: " USERNAME
-    read -sp "Enter your GitHub token: " TOKEN
-    echo
-
     # Push the changes to the remote repository
     git push "$REMOTE_NAME" HEAD:master
 
