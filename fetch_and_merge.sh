@@ -7,12 +7,12 @@ echo "Fetching and merging main repository in $SOURCE_DIR"
 
 # Check if the current directory is a Git repository
 if [ -d ".git" ]; then
-    # Get the first remote name
+    # Get remote name
     REMOTE_NAME=$(git remote | head -n 1)
 
     if [ -n "$REMOTE_NAME" ]; then
         git fetch "$REMOTE_NAME"
-        git checkout master
+        git checkout master   #checkouta bak
         git merge "$REMOTE_NAME"/master
 
         # If there are any conflicts, abort the script
@@ -31,8 +31,8 @@ else
     exit 1
 fi
 
-# Prompt the user for confirmation to stage, commit, and push changes
-read -p "Do you want to stage, commit, and push the changes? (y/n): " CONFIRM
+# Prompt the user for confirmation to commit, and push changes
+read -p "Do you want to commit, and push the changes? (y/n): " CONFIRM
 
 if [ "$CONFIRM" = "y" ]; then
     # Stage the changes
@@ -50,10 +50,8 @@ if [ "$CONFIRM" = "y" ]; then
     echo
 
     # Push the changes to the remote repository
-    git push origin HEAD:master
-    
-else
-    echo "Changes were not staged, committed, or pushed."
-fi
+    git push REMOTE_NAME HEAD:master
 
-echo "Script execution completed."
+else
+    echo "Changes were not committed, or pushed."
+fi
