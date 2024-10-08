@@ -50,7 +50,7 @@ if [ "$CONFIRM" = "y" ]; then
     echo
 
     # Push the changes to the remote repository
-    git push REMOTE_NAME HEAD:master
+    git push "$REMOTE_NAME" HEAD:master
 
 else
     echo "Changes were not committed, or pushed."
